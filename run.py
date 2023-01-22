@@ -35,7 +35,7 @@ def get_word():
     return word
 
 
-def user_guess():
+def get_user_guess(guessed_letters):
     """
     Prompt the user to guess a letter and validate it.
 
@@ -51,6 +51,23 @@ def user_guess():
       guessed_letters: set of str - leters that the user has guessed already.
     """
 
+    while True:
+        user_guess = input('\nGuess a letter.\n').strip().upper()
 
-main()
+        if len(user_guess) > 1 or not user_guess.isalpha():
+            print('Please enter a single letter.')
+            continue
 
+        if user_guess in guessed_letters:
+            print('You\'ve guessed that already')
+            continue
+
+        break
+
+    return user_guess
+
+
+guessed_letters = []
+
+get_word()
+get_user_guess(guessed_letters)
