@@ -1,3 +1,56 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+"""
+Hangman
+
+1 When use starts game, computer chooses a random word from a list
+
+2 computer will display dasches representing the word
+
+3 User will get a chanse to guess 1 letter at the time.
+    - If they enter something thatäs not a letter, print an error
+      and prompt the user to try again
+    - If they've guessed the letter earlier, tell them that the
+      letter has already been guessed and give them another chance
+    - If they guess a letter the haven't guessed before, check whether it's
+      in the word. and reveal it.
+
+    show the list of words they have guessed previously
+
+4 Repeat 3 until the game is over. Game is over whne:
+    - Word is guessed -- tell them they've won
+    -They've reached a preset number of failures
+"""
+
+import random
+
+WORD_LIBRARY = ['computer', 'windows', 'skynet', 'monitor', 'elevator']
+
+ALLOWED_INCORRECT_ANSWERS = 8
+
+
+def get_word():
+    """
+    Get a Random word from the Word library and returns it
+    """
+    word = random.choice(WORD_LIBRARY)
+    return word
+
+
+def user_guess():
+    """
+    Prompt the user to guess a letter and validate it.
+
+    Validation rules:
+      - Input should be a single letter from the Roman alphabet.
+      - Input should not have been guessed previously.
+
+    Cleanup:
+      - Input is converted to uppercase.
+      - Input is stripped from whitespace.
+
+    Args:
+      guessed_letters: set of str - leters that the user has guessed already.
+    """
+
+
+main()
+
