@@ -67,7 +67,56 @@ def get_user_guess(guessed_letters):
     return user_guess
 
 
-guessed_letters = []
+def display_dashed_word(word, letters_to_reveal):
+    """
+    Given a word, print a dashed representation of it.
 
-get_word()
-get_user_guess(guessed_letters)
+    Letters that should be shown are provided in the second argument. If a
+    a letter in the word is not on that list, it'll be represented by a dash.
+
+    Args:
+        word: str - The word to print.
+        letters_to_reveal: list of str - List of letters in the word to show.
+    """
+    dashed_word = ''
+
+    for letter in word:
+        if letter in letters_to_reveal:
+            dashed_word += f' {letter}'
+        else:
+            dashed_word += ' _'
+    print(dashed_word)
+
+
+def main():
+
+    word = get_word()
+    num_unique_letters_in_word = len(set(word))
+
+    incorrect_tries = 0
+    guessed_letters = set()
+    correct_guesses = []
+
+    game_won = False
+
+    display_dashed_word(word, correct_guesses)
+
+    while (incorrect_tries <= ALLOWED_INCORRECT_ANSWERS) and not game_won:
+        guessed_letter = get_user_guess(guessed_letters)
+
+        if guessed_letter not in word:
+            incorrect_tries += 1 
+
+        if guessed_letter in word:
+            correct_guesses.append(guessed_letter)
+
+        guessed_letters.add(guessed_letter)
+
+        display_dashed_word(word, guessed_letters)
+        print(f'you have guessed: {guessed_letters}')
+
+        if len(correct_guesses) == num_unique_letters_in_word:
+            game_won = True
+
+
+main()
