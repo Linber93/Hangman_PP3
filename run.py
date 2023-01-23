@@ -86,6 +86,18 @@ def display_dashed_word(word, letters_to_reveal):
         else:
             dashed_word += ' _'
     print(dashed_word)
+    
+
+def play_again():
+    response = input('Would you like to play again? (y/n)\n').strip().lower()
+    if response == "y":
+        main()
+    elif response == "n":
+        print("Thanks for playing!")
+        return
+    else:
+        print('Invalid response. Please enter "y" or "n".')
+        play_again()
 
 
 def main():
@@ -117,6 +129,13 @@ def main():
 
         if len(correct_guesses) == num_unique_letters_in_word:
             game_won = True
+
+    if game_won:
+        print('You made it')
+
+    else: 
+        print('You failed')
+    play_again()
 
 
 main()
