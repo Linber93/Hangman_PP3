@@ -32,7 +32,7 @@ def get_word():
     Get a Random word from the Word library and returns it
     """
     word = random.choice(WORD_LIBRARY)
-    return word
+    return word.upper()
 
 
 def get_user_guess(guessed_letters):
