@@ -67,6 +67,45 @@ def get_user_guess(guessed_letters):
     return user_guess
 
 
+def main_menu():
+    """
+    Display a welcome message to allow the user to first see instructions
+    or skip to start the game
+    """
+    print('Welcome to a friendly game of Hangman!\n')
+    instructions = input('would you want to see the instructions?\n' +
+                         '(y/n)\n').strip().lower()
+
+    if instructions == 'y':
+        display_instructions()
+        continue_to_game = input('would you like to start the game?\n' +
+                                 '(y/n)\n').strip().lower()
+        if continue_to_game == 'y':
+            main()
+        else:
+            return
+
+    else:
+        main()
+
+
+def display_instructions():
+    """
+    Displays rules and instructions on how the game is played
+    """
+    print('Welcome to the game of Hangman!\n')
+    print('The aim of the game is to guess the word chosen by the computer.\n')
+    print('You will be prompted to guess a letter one at a time.\n')
+    print('If the letter is in the word, it will be revealed.\n')
+    print('If the letter is not in the word, you will lose a chance.\n')
+    print('You have a total of 8 chances to guess the word.\n')
+    print('After each guess, a list will show your previously' +
+          'guessed letters.\n')
+    print('The game ends when you either successfully guess the word' +
+          'or when you run out of tries\n')
+    print('Good luck!\n')
+
+
 def display_dashed_word(word, letters_to_reveal):
     """
     Given a word, print a dashed representation of it.
@@ -142,4 +181,4 @@ def main():
     play_again()
 
 
-main()
+main_menu()
