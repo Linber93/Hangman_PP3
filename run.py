@@ -157,7 +157,7 @@ def main():
 
     display_dashed_word(word, correct_guesses)
 
-    while (incorrect_tries <= ALLOWED_INCORRECT_ANSWERS) and not game_won:
+    while (incorrect_tries < ALLOWED_INCORRECT_ANSWERS) and not game_won:
         guessed_letter = get_user_guess(guessed_letters)
 
         if guessed_letter not in word:
