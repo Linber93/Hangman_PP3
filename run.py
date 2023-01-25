@@ -142,6 +142,29 @@ def display_dashed_word(word, letters_to_reveal):
 
 
 def play_game():
+    """
+    This function is responsible for running the game logic of the Hangman
+    game. It does the following:
+
+    1. Selects a random word from a predefined list of words.
+
+    2. Displays the word in a dashed format, with letters that have
+       been guessed correctly revealed.
+
+    3. Prompts the user to guess a letter, validates the input,
+       and keeps track of the guessed letters.
+
+    4. If the letter is in the word, it is revealed, otherwise
+       the user loses a chance.
+
+    5. The game ends when the user either successfully guesses
+       the word or runs out of chances.
+
+    6. If the user wins, it displays a message of congratulations,
+       otherwise a message of failure.
+
+    7. Prompts the user to play again.
+    """
 
     word = get_word()
     num_unique_letters_in_word = len(set(word))
@@ -200,7 +223,7 @@ def play_again():
 def main():
 
     main_menu()
-
+    """
     word = get_word()
     num_unique_letters_in_word = len(set(word))
 
@@ -238,6 +261,7 @@ def main():
     else:
         print('You failed')
     play_again()
+    """
 
 
 main()
