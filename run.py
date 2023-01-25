@@ -73,8 +73,8 @@ def main_menu():
     or skip to start the game
     """
     print('Welcome to a friendly game of Hangman!\n')
-    instructions = input('would you want to see the instructions?\n' +
-                         '(y/n)\n').strip().lower()
+    instructions = input('would you want to see the instructions\n' +
+                         'before we start?(y/n)\n').strip().lower()
 
     if instructions == 'y':
         display_instructions()
@@ -140,10 +140,11 @@ def play_again():
         return
     else:
         print('Invalid response. Please enter "y" or "n".')
-        play_again()
 
 
 def main():
+
+    main_menu()
 
     word = get_word()
     num_unique_letters_in_word = len(set(word))
@@ -181,4 +182,4 @@ def main():
     play_again()
 
 
-main_menu()
+main()
