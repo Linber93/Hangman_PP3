@@ -80,13 +80,9 @@ def main_menu():
         display_instructions()
         continue_to_game = input('would you like to start the game?\n' +
                                  '(y/n)\n').strip().lower()
-        if continue_to_game == 'y':
-            main()
-        else:
-            return
-
-    else:
-        main()
+        if continue_to_game == 'n':
+            print('See you later!')
+            exit()
 
 
 def display_instructions():
@@ -137,7 +133,7 @@ def play_again():
         main()
     elif response == "n":
         print("Thanks for playing!")
-        return
+        exit()
     else:
         print('Invalid response. Please enter "y" or "n".')
 
@@ -152,7 +148,7 @@ def main():
     incorrect_tries = 0
     guessed_letters = set()
     correct_guesses = []
-
+    
     game_won = False
 
     display_dashed_word(word, correct_guesses)
@@ -162,6 +158,8 @@ def main():
 
         if guessed_letter not in word:
             incorrect_tries += 1
+            tries_left = ALLOWED_INCORRECT_ANSWERS - incorrect_tries
+            print(f'You have {tries_left} left')
 
         if guessed_letter in word:
             correct_guesses.append(guessed_letter)
