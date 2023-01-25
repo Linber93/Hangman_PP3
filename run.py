@@ -146,9 +146,9 @@ def main():
     num_unique_letters_in_word = len(set(word))
 
     incorrect_tries = 0
-    guessed_letters = set()
-    correct_guesses = []
-    
+    guessed_letters = []
+    correct_guesses = set()
+
     game_won = False
 
     display_dashed_word(word, correct_guesses)
@@ -159,15 +159,16 @@ def main():
         if guessed_letter not in word:
             incorrect_tries += 1
             tries_left = ALLOWED_INCORRECT_ANSWERS - incorrect_tries
-            print(f'You have {tries_left} left')
+            print(f'\n\n Incorrect, you have {tries_left} tries left. ' +
+                  'try again.')
 
         if guessed_letter in word:
-            correct_guesses.append(guessed_letter)
+            correct_guesses.add(guessed_letter)
 
-        guessed_letters.add(guessed_letter)
+        guessed_letters.append(guessed_letter)
 
         display_dashed_word(word, guessed_letters)
-        print(f'you have guessed: {guessed_letters}')
+        print(f'\nyou have guessed: {guessed_letters}')
 
         if len(correct_guesses) == num_unique_letters_in_word:
             game_won = True
