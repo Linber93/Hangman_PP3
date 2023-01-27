@@ -52,7 +52,7 @@ def get_word():
     """
     Get a Random word from the Word library and returns it
     """
-    word = random.choice(all_words)
+    word = random.choice(all_words)[0]
     return word.upper()
 
 
@@ -95,12 +95,12 @@ def main_menu():
     """
     print('Welcome to a friendly game of Hangman!\n')
     while True:
-        instructions = input('would you want to see the instructions\n' +
+        instructions = input('would you want to see the instructions' +
                              'before we start?(y/n)\n').strip().lower()
         if instructions == 'y':
             display_instructions()
             while True:
-                continue_to_game = input('would you like to start the \n' +
+                continue_to_game = input('would you like to start the ' +
                                          'game?(y/n)\n').strip().lower()
                 if continue_to_game == 'y':
                     play_game()
@@ -112,7 +112,7 @@ def main_menu():
                     print("Invalid innput, please enter 'y' or 'n'")
         elif instructions == 'n':
             while True:
-                continue_to_game = input('would you like to start the \n' +
+                continue_to_game = input('would you like to start the ' +
                                          'game?(y/n)\n').strip().lower()
                 if continue_to_game == 'y':
                     play_game()
