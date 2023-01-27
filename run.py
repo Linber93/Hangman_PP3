@@ -58,6 +58,9 @@ def get_word():
 
 def get_user_input(message):
     """
+    -inputs from user are stripped from whitespace
+
+    -allows the user to quit the game at any time
     """
 
     user_input = input(message + "\n").strip()
@@ -105,15 +108,15 @@ def main_menu():
     Display a welcome message to allow the user to first see instructions
     or skip to start the game
     """
-    print('Welcome to a friendly game of Hangman!\n')
+    print('\nWelcome to a friendly game of Hangman!\n')
     while True:
         instructions = get_user_input('would you want to see the instructions '
-                                      'before we start?(y/n)').lower()
+                                      'before we start? (y/n)').lower()
         if instructions == 'y':
             display_instructions()
             while True:
                 continue_to_game = get_user_input('would you like to start '
-                                                  'the game?(y/n)').lower()
+                                                  'the game? (y/n)').lower()
                 if continue_to_game == 'y':
                     play_game()
                     break
@@ -125,7 +128,7 @@ def main_menu():
         elif instructions == 'n':
             while True:
                 continue_to_game = get_user_input('would you like to start '
-                                                  'the game?(y/n)').lower()
+                                                  'the game? (y/n)').lower()
                 if continue_to_game == 'y':
                     play_game()
                     break
@@ -150,6 +153,7 @@ def display_instructions():
           'guessed letters.\n')
     print('The game ends when you either successfully guess the word'
           'or when you run out of tries\n')
+    print('You can exit the game at any time by using the keyword "quit"')
     print('Good luck!\n')
 
 
@@ -231,10 +235,10 @@ def play_game():
             game_won = True
 
     if game_won:
-        print('You made it')
+        print('You made it\n')
 
     else:
-        print('You failed')
+        print('You failed\n')
     play_again()
 
 
