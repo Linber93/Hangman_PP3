@@ -1,15 +1,19 @@
 """
 Hangman
 
-1 When use starts game, computer chooses a random word from a list
+1 When use starts game, computer chooses a random
+ word from a list within a google sheet
 
-2 computer will display dasches representing the word
+2 computer show dashes that represents letters in the word
 
 3 User will get a chanse to guess 1 letter at the time.
-    - If they enter something thatäs not a letter, print an error
+    - If they enter something thats not a letter, print an error
       and prompt the user to try again
-    - If they've guessed the letter earlier, tell them that the
+
+    - If they've guessed the letter before, tell them that the
       letter has already been guessed and give them another chance
+
+
     - If they guess a letter the haven't guessed before, check whether it's
       in the word. and reveal it.
 
@@ -35,12 +39,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 WORD_LIBRARY = GSPREAD_CLIENT.open('word_library')
 
-words = WORD_LIBRARY.worksheet('words')
+worksheet = WORD_LIBRARY.worksheet('words')
 # WORD_LIBRARY = ['computer', 'windows', 'skynet', 'monitor', 'elevator']
 
-data = words.get_all_values()
+all_words = worksheet.get_all_values()
 
-print(data)
 
 ALLOWED_INCORRECT_ANSWERS = 8
 
@@ -49,7 +52,7 @@ def get_word():
     """
     Get a Random word from the Word library and returns it
     """
-    word = random.choice(WORD_LIBRARY)
+    word = random.choice(all_words)
     return word.upper()
 
 
