@@ -23,7 +23,7 @@ Hangman
     - Word is guessed -- tell them they've won
     -They've reached a preset number of failures
 """
-
+import sys
 import random
 import gspread
 from google.oauth2.service_account import Credentials
@@ -56,6 +56,18 @@ def get_word():
     return word.upper()
 
 
+def get_user_input(message):
+    """
+    """
+
+    user_input = input(message + "\n").strip()
+
+    if user_input == "quit":
+        sys.exit()
+
+    return user_input
+
+
 def get_user_guess(guessed_letters):
     """
     Prompt the user to guess a letter and validate it.
@@ -73,7 +85,7 @@ def get_user_guess(guessed_letters):
     """
 
     while True:
-        user_guess = input('\nGuess a letter.\n').strip().upper()
+        user_guess = get_user_input('\nGuess a letter.')
 
         if len(user_guess) > 1 or not user_guess.isalpha():
             print('Please enter a single letter.')
@@ -95,13 +107,13 @@ def main_menu():
     """
     print('Welcome to a friendly game of Hangman!\n')
     while True:
-        instructions = input('would you want to see the instructions' +
-                             'before we start?(y/n)\n').strip().lower()
+        instructions = get_user_input('would you want to see the instructions '
+                                      'before we start?(y/n)').lower()
         if instructions == 'y':
             display_instructions()
             while True:
-                continue_to_game = input('would you like to start the ' +
-                                         'game?(y/n)\n').strip().lower()
+                continue_to_game = get_user_input('would you like to start '
+                                                  'the game?(y/n)').lower()
                 if continue_to_game == 'y':
                     play_game()
                     break
@@ -112,8 +124,8 @@ def main_menu():
                     print("Invalid innput, please enter 'y' or 'n'")
         elif instructions == 'n':
             while True:
-                continue_to_game = input('would you like to start the ' +
-                                         'game?(y/n)\n').strip().lower()
+                continue_to_game = get_user_input('would you like to start '
+                                                  'the game?(y/n)').lower()
                 if continue_to_game == 'y':
                     play_game()
                     break
@@ -134,9 +146,9 @@ def display_instructions():
     print('If the letter is in the word, it will be revealed.\n')
     print('If the letter is not in the word, you will lose a chance.\n')
     print('You have a total of 8 chances to guess the word.\n')
-    print('After each guess, a list will show your previously' +
+    print('After each guess, a list will show your previously'
           'guessed letters.\n')
-    print('The game ends when you either successfully guess the word' +
+    print('The game ends when you either successfully guess the word'
           'or when you run out of tries\n')
     print('Good luck!\n')
 
@@ -231,7 +243,7 @@ def play_again():
     once the game has reached the end. the user gets asked if they
     would like to play again
     """
-    response = input('Would you like to play again? (y/n)\n').strip().lower()
+    response = get_user_input('Would you like to play again? (y/n)').lower()
     if response == "y":
         main()
     elif response == "n":
