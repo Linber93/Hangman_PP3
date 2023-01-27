@@ -256,45 +256,6 @@ def play_again():
 def main():
 
     main_menu()
-    """
-    word = get_word()
-    num_unique_letters_in_word = len(set(word))
-
-    incorrect_tries = 0
-    guessed_letters = []
-    correct_guesses = set()
-
-    game_won = False
-
-    display_dashed_word(word, correct_guesses)
-
-    while (incorrect_tries < ALLOWED_INCORRECT_ANSWERS) and not game_won:
-        guessed_letter = get_user_guess(guessed_letters)
-
-        if guessed_letter not in word:
-            incorrect_tries += 1
-            tries_left = ALLOWED_INCORRECT_ANSWERS - incorrect_tries
-            print(f'\n\n Incorrect, you have {tries_left} tries left. ' +
-                  'try again.')
-
-        if guessed_letter in word:
-            correct_guesses.add(guessed_letter)
-
-        guessed_letters.append(guessed_letter)
-
-        display_dashed_word(word, guessed_letters)
-        print(f'\nyou have guessed: {guessed_letters}')
-
-        if len(correct_guesses) == num_unique_letters_in_word:
-            game_won = True
-
-    if game_won:
-        print('You made it')
-
-    else:
-        print('You failed')
-    play_again()
-    """
 
 
 main()
