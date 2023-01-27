@@ -21,8 +21,26 @@ Hangman
 """
 
 import random
+import gspread
+from google.oauth2.service_account import Credentials
 
-WORD_LIBRARY = ['computer', 'windows', 'skynet', 'monitor', 'elevator']
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+WORD_LIBRARY = GSPREAD_CLIENT.open('word_library')
+
+words = WORD_LIBRARY.worksheet('words')
+# WORD_LIBRARY = ['computer', 'windows', 'skynet', 'monitor', 'elevator']
+
+data = words.get_all_values()
+
+print(data)
 
 ALLOWED_INCORRECT_ANSWERS = 8
 
