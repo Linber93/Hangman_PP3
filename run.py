@@ -43,16 +43,23 @@ worksheet = WORD_LIBRARY.worksheet('words')
 # WORD_LIBRARY = ['computer', 'windows', 'skynet', 'monitor', 'elevator']
 
 all_words = worksheet.get_all_values()
-
+word_array = []
 
 ALLOWED_INCORRECT_ANSWERS = 8
+
+
+def fix_word_array():
+
+    for wordlist in all_words:
+        for word in wordlist:
+            word_array.append(word)
 
 
 def get_word():
     """
     Get a Random word from the Word library and returns it
     """
-    word = random.choice(all_words)[0]
+    word = random.choice(word_array)
     return word.upper()
 
 
@@ -88,7 +95,7 @@ def get_user_guess(guessed_letters):
     """
 
     while True:
-        user_guess = get_user_input('\nGuess a letter.')
+        user_guess = get_user_input('\nGuess a letter.').upper()
 
         if len(user_guess) > 1 or not user_guess.isalpha():
             print('Please enter a single letter.')
@@ -208,6 +215,7 @@ def play_game():
 
     incorrect_tries = 0
     guessed_letters = []
+    word_char_array = list(word)
     correct_guesses = set()
 
     game_won = False
@@ -217,13 +225,13 @@ def play_game():
     while (incorrect_tries < ALLOWED_INCORRECT_ANSWERS) and not game_won:
         guessed_letter = get_user_guess(guessed_letters)
 
-        if guessed_letter not in word:
+        if guessed_letter not in word_char_array:
             incorrect_tries += 1
             tries_left = ALLOWED_INCORRECT_ANSWERS - incorrect_tries
             print(f'\n\n Incorrect, you have {tries_left} tries left. ' +
                   'try again.')
 
-        if guessed_letter in word:
+        else:
             correct_guesses.add(guessed_letter)
 
         guessed_letters.append(guessed_letter)
@@ -258,6 +266,7 @@ def play_again():
 
 
 def main():
+    fix_word_array()
 
     main_menu()
 
