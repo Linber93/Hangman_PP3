@@ -1,8 +1,10 @@
 # Hangman
 
-[View deployed site here](https://linber93.github.io/escapeTheBuilding/)
+[View deployed site here](https://linber-hangman-pp3.herokuapp.com/)
 
 This is my third project assignment during the Full Stack Software Developer course. It comes in the form of a hangman game which is ran in the python terminal.
+
+![game on different devices](https://github.com/Linber93/Hangman_PP3/blob/main/readme-assets/am_i_responsive_pp3.png)
 
 ## Objective
 
@@ -15,17 +17,15 @@ The objective of the game is for the user to guess the correct word chosen by th
  - will on launch display a welcome message and ask the user if they would like to
    read the instructions before starting the game.
 
-![header](https://github.com/Linber93/escapeTheBuilding/blob/main/assets/readme/escape-the-building-header.png)
+![Main menu](https://github.com/Linber93/Hangman_PP3/blob/main/readme-assets/game_ui_pp3.png)
 
 - __Navigation__
  - Navigation the menus if done via answering the questions asked with the letter "y" for yes, and "n" for no
 
-![gameboard](https://github.com/Linber93/escapeTheBuilding/blob/main/assets/readme/escape-the-building-gameboard.png)
-
 - __instructions__
  - describes all the rules, instructions and options
 
-![navigation pad](https://github.com/Linber93/escapeTheBuilding/blob/main/assets/readme/escape-the-building-navigation.png)
+![instructions](https://github.com/Linber93/Hangman_PP3/blob/main/readme-assets/instructions_pp3.png)
 
 - __Word selection__
  - Word are selected randomly from a Google Sheet.
@@ -36,7 +36,8 @@ The objective of the game is for the user to guess the correct word chosen by th
  - On incorrect guesses the user will shown the amount of tries left before the game ends
  - On an correct guess the letter will be revealed
 
-![start button](https://github.com/Linber93/escapeTheBuilding/blob/main/assets/readme/escape-the-building-start-button.png)
+![incorrect guess]https://github.com/Linber93/Hangman_PP3/blob/main/readme-assets/Incorrect_guess_pp3.png)
+![correct guess](https://github.com/Linber93/Hangman_PP3/blob/main/readme-assets/correct_guess_pp3.png)
 
 - __Exiting game__
  - The game can be exited at all times by inputing the keyword "quit" in the terminal.
@@ -100,7 +101,7 @@ The objective of the game is for the user to guess the correct word chosen by th
   9. Run the command: git push origin main
   10. Run the command: git push heroku main
 
- [View deployed site here](https://linber93.github.io/escapeTheBuilding/)
+ [View deployed site here](https://linber-hangman-pp3.herokuapp.com/)
 
 ## Forking
 Forking the GitHub Repository
