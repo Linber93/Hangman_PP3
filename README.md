@@ -72,6 +72,14 @@ The objective of the game is for the user to guess the correct word chosen by th
 
 - Python code Validated using the pep8. [PEP8](https://pep8ci.herokuapp.com/)
 
+### Bugs
+
+## Solved bugs
+- fixed a bug where the returned format from the google sheets was a list of lists that couldn't be iterated through properly.
+
+## Remaining bugs
+- No known bugs at this time.
+
 ## Deployment
 
 - The website has been deployed to Heroku. The process of moving the site to Heroku includes:
