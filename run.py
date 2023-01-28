@@ -49,7 +49,10 @@ ALLOWED_INCORRECT_ANSWERS = 8
 
 
 def fix_word_array():
-
+    """
+    transform the information fetched from the worksheet from a List of lists
+    to a list of strings
+    """
     for wordlist in all_words:
         for word in wordlist:
             word_array.append(word)
@@ -266,6 +269,9 @@ def play_again():
 
 
 def main():
+    """
+    Main function that defines the workflow of the game
+    """
     fix_word_array()
 
     main_menu()
